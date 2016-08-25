@@ -66,7 +66,7 @@ public class LugaAcceCtrl {
     public boolean elim(Long empId)
     {
         boolean resp = false;
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("POOPU");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("PooPoolPU");
         EntityManager em = emf.createEntityManager();
         EntityTransaction tx = em.getTransaction();
         tx.begin();

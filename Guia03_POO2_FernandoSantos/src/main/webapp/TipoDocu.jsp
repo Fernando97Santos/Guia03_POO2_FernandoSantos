@@ -4,7 +4,9 @@
     Author     : ferna
 --%>
 
+<%@page import="com.sv.udb.controlador.TipoDocuCtrl"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://displaytag.sf.net/el" prefix="display" %>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
@@ -15,6 +17,8 @@
         <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet" />
         <link href="default.css" rel="stylesheet" type="text/css" media="all" />
         <link href="fonts.css" rel="stylesheet" type="text/css" media="all" />
+        <link rel="stylesheet" href="css/style.css"/>
+        <link href="css/reset.css">
 
         <!--[if IE 6]><link href="default_ie6.css" rel="stylesheet" type="text/css" /><![endif]-->
 
@@ -43,7 +47,7 @@
                 </div>
                 <div class="content">
                     <h1>${mensAler}</h1>
-                    <form method="post" name="frmPers" id="frmPers" action="LugaAcceServ">
+                    <form method="post" name="frmPers" id="frmPers" action="TipoDocuServ">
                         <div class="row">
                             <input type="hidden" name="CodiTipoDocu" value="${CodiTipoDocu}"/>
                             <div class="text" >
@@ -65,7 +69,32 @@
                 </div>
             </div>
         </div>
-
+                  
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <div class="title">
+            <h2>Consultar Tipo Documento</h2>
+        </div>
+        <form method="POST" name="Frm" action="TipoDocuServ">
+            <% request.setAttribute("demoAttr", new TipoDocuCtrl().ConsTodo());%>
+            <div  class="tbl-content">
+                <display:table id="TipoDocu" name="demoAttr" class="bordered highlight centered">
+                    <display:column property="nombTipoDocu" title="Nombre"sortable="true"/>
+                    <display:column property="fechAlta" title="Fecha Alta" sortable="true"/>
+                    <display:column property="fechBaja" title="Fecha Baja" sortable="true"/>
+                    <display:column title="Codigo" sortable="true">
+                        <input type="radio" name="codiTipoDocu" id="${TipoDocu.codiTipoDocu}" value="${TipoDocu.codiTipoDocu}"/><label for="${TipoDocu.codiTipoDocu}"></label>
+                    </display:column>
+                </display:table>
+            </div>   
+            <br/>
+            <div class="row">
+                <input type="submit" class="button submit" name="cursBton" value="Consultar"/>
+            </div>
+            <br/>
+        </form>
 
 
         <div id="copyright">
