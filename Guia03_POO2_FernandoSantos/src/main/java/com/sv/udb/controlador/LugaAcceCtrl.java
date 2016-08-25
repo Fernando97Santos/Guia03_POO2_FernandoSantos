@@ -63,21 +63,23 @@ public class LugaAcceCtrl {
         return resp;
     }
     
-    public boolean elim(LugaAcce obje)
+    public boolean elim(Long empId)
     {
         boolean resp = false;
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("PooPoolPU");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("POOPU");
         EntityManager em = emf.createEntityManager();
         EntityTransaction tx = em.getTransaction();
         tx.begin();
-        try
-        {
-            em.remove(obje);
-            tx.commit();
-            resp = true;
-        }
-        catch(Exception ex)
-        {
+        LugaAcce respo = null;
+        try{
+            respo = em.find(LugaAcce.class, empId);
+            if(respo != null)
+            {
+                em.remove(respo);
+                tx.commit();
+                resp = true; 
+            }
+        }catch(Exception e){
             tx.rollback();
         }
         em.close();

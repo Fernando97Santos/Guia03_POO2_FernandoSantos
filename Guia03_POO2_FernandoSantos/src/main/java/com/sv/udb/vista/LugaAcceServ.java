@@ -69,8 +69,8 @@ public class LugaAcceServ extends HttpServlet {
             }
             else if(CRUD.equals("Eliminar"))
             {
-//                Long CodiLuga = Long.parseLong(request.getParameter("CodiLuga"));
-//                mens = new LugaAcceCtrl().elim(CodiLuga) ? "Datos Eliminados" : "Datos no eliminados"; 
+               long CodiLuga = Long.parseLong(request.getParameter("CodiLuga"));
+               mens = new LugaAcceCtrl().elim(CodiLuga) ? "Datos Eliminados" : "Datos no eliminados"; 
             }
             request.setAttribute("mensAler", mens);
             request.getRequestDispatcher("Lugar.jsp").forward(request, response);
