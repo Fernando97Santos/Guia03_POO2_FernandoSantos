@@ -29,7 +29,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name = "luga_acce", catalog = "rceron_poo", schema = "")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "LugaAcce.findAll", query = "SELECT l FROM LugaAcce l"),
+    @NamedQuery(name = "LugaAcce.findAll", query = "SELECT l FROM LugaAcce l WHERE l.esta = 1"),
     @NamedQuery(name = "LugaAcce.findByCodiLugaAcce", query = "SELECT l FROM LugaAcce l WHERE l.codiLugaAcce = :codiLugaAcce"),
     @NamedQuery(name = "LugaAcce.findByNombLugaAcce", query = "SELECT l FROM LugaAcce l WHERE l.nombLugaAcce = :nombLugaAcce"),
     @NamedQuery(name = "LugaAcce.findByFechAlta", query = "SELECT l FROM LugaAcce l WHERE l.fechAlta = :fechAlta"),

@@ -69,9 +69,18 @@ public class TipoDocuServ extends HttpServlet {
             }
             else if(CRUD.equals("Eliminar"))
             {
-               long CodiLuga = Long.parseLong(request.getParameter("CodiLuga"));
-               mens = new TipoDocuCtrl().elim(CodiLuga) ? "Datos Eliminados" : "Datos no eliminados"; 
+                TipoDocu obje = new TipoDocu();
+                obje.setNombTipoDocu(request.getParameter("NombTipoDocu"));
+                obje.setFechBaja(new Date());
+                obje.setEsta(0);
+                obje.setCodiTipoDocu(Long.parseLong(request.getParameter("CodiTipoDocu")));
+                mens = new TipoDocuCtrl().modi(obje) ? "Datos Eliminados" : "Datos no eliminados"; 
             }
+//            else if(CRUD.equals("Eliminar"))
+//            {
+//               long CodiLuga = Long.parseLong(request.getParameter("CodiLuga"));
+//               mens = new TipoDocuCtrl().elim(CodiLuga) ? "Datos Eliminados" : "Datos no eliminados"; 
+//            }
             request.setAttribute("mensAler", mens);
             request.getRequestDispatcher("TipoDocu.jsp").forward(request, response);
         }
